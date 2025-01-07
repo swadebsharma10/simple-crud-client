@@ -10,6 +10,8 @@ import Home from './Pages/Home';
 import About from './Pages/About';
 import Register from './Pages/Register';
 import Contact from './Pages/Contact';
+import Users from './Pages/Users';
+import Update from './Pages/Update';
 
 const router = createBrowserRouter([
   {
@@ -19,6 +21,16 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home/>
+      },
+      {
+        path: '/users',
+        element:<Users/>,
+        loader: ()=> fetch(`http://localhost:5000/users`)
+      },
+      {
+        path: '/update/:id',
+        element: <Update/>,
+        loader: ({params})=> fetch(`http://localhost:5000/users/${params.id}`)
       },
       {
         path: '/about',
